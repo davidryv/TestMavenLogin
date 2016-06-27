@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Testing on 6/14/2016.
  */
-public class CreateSurvey extends LogInClass {
+public class CreateSurvey extends launchSite {
 
     public static void CreateSurvey() {
         WebElement TxtBoxContent;
-        String name="-------David Rios Test-------";
+        String name="-------David Rios Test 2-------";
         String description="This is an automated generated survey";
 // Create a new instance of the Firefox driver
 //  Wait For Page To Load
@@ -24,15 +24,16 @@ public class CreateSurvey extends LogInClass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 // Navigate to URL
-        driver.findElement(By.xpath("//*[@id=\"sidemenu\"]/li[2]/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"addButton\"]")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.id("_name_id")).sendKeys(name);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.id("_description_id_ifr")).sendKeys(description);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id=\"surveyDefinition\"]/div[10]/div/input[3]")).sendKeys(Keys.SPACE);
+        driver.findElement(By.xpath("//*[@id=\"surveyDefinition\"]/div[8]/div/input[2]")).sendKeys(Keys.SPACE);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.name("_proceed")).click();
+        driver.findElement(By.name("_proceed")).sendKeys(Keys.ENTER);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 // Maximize the window.
 
 // Enter UserName

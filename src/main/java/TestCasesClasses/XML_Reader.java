@@ -21,20 +21,27 @@ import TestCasesClasses.LogInClass;
 public class XML_Reader {
 
 
-    public static void XMLReader(){
-
+    public static String[] XMLReader(){
+        String[] configuration = new String [8];
         try {
             File inputFile = new File("C:\\Users\\Testing\\IdeaProjects\\TestLogIn\\Configuration Files\\TestLogin.xml");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             UserHandler userhandler = new UserHandler();
             saxParser.parse(inputFile, userhandler);
-            String[] configuration = new String [] {userhandler.usernamepassword,userhandler.tagusername,userhandler.tagpassword,userhandler.tagsubmit,userhandler.taglogout};
-            LogInClass.login(userhandler.pageURL, userhandler.tagusername ,userhandler.tagpassword,userhandler.tagsubmit, userhandler.taglogout, userhandler.username, userhandler.usernamepassword );
+
+            configuration[0]=userhandler.usernamepassword;
+            configuration[1]=userhandler.tagusername;
+            configuration[2]=userhandler.tagpassword;
+            configuration[3]=userhandler.tagsubmit;
+            configuration[4]=userhandler.taglogout;
+            configuration[5]=userhandler.pageURL;
+            configuration[6]=userhandler.username;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    return configuration;
     }
 }
 
@@ -80,6 +87,8 @@ class UserHandler extends DefaultHandler {
     @Override
     public void characters(char ch[],
                            int start, int length) throws SAXException {
+
+
         if (bUsername) {
             System.out.println("USERNAME : "
                     + new String(ch, start, length));

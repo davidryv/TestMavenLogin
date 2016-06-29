@@ -39,4 +39,10 @@ public class SampleTest {
         Assert.assertTrue(true);
     }
 
+    @Test (dependsOnGroups = "createSurvery",groups="createQuestion")
+    public void CreateQuestion(){
+        CreateQuestion.CreateQuestion();
+        Assert.assertTrue(true);
+    }
+
 }
